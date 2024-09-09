@@ -16,14 +16,14 @@ jobs:
 
       - name: Install and Build Astro Site
         run: |
-          cd Landing
+          cd landing
           bun install
           bun run build
           cd ..
 
       - name: Install and Build React App
         run: |
-          cd App
+          cd app
           bun install
           bun run build
           cd ..
@@ -31,9 +31,9 @@ jobs:
       - name: Prepare deployment
         run: |
           mkdir deploy
-          cp -r Landing/dist/* deploy/
+          cp -r landing/dist/* deploy/
           mkdir -p deploy/app
-          cp -r App/build/* deploy/app/
+          cp -r app/build/* deploy/app/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
