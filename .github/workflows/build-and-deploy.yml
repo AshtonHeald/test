@@ -34,6 +34,7 @@ jobs:
           cp -r landing/dist/* deploy/
           mkdir -p deploy/app
           cp -r app/dist/* deploy/app/
+          echo 'app.hajimari.online' > deploy/app/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
