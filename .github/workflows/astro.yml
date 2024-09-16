@@ -38,25 +38,21 @@ jobs:
         uses: oven-sh/setup-bun@v1 # Official Bun setup action
         with:
           bun-version: "latest" # Specify the version of Bun you want to use
-      
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      
-      - name: Install dependencies with Bun
-        run: bun install
-        working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Build with Astro using Bun
-        run: bun astro build \
-          --site "${{ steps.pages.outputs.origin }}" \
-          --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
-      
+      - name: Install and Build Landing Page
+        run: |
+          cd apps/landing-page
+          bun install
+          bun run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_PATH }}/dist
+          path: apps/landing-page/dist
 
   deploy:
     environment:
