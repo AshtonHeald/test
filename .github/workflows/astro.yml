@@ -45,7 +45,7 @@ jobs:
 
       - name: Install and Build Landing Page
         run: |
-          cd apps/landing-page
+          cd landing
           bun install
           bun run build
 
